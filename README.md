@@ -1,1 +1,1 @@
-# Niri Dolfiles
+# Niri Dotfiles
