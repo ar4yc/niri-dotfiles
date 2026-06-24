@@ -36,8 +36,7 @@ spawn-at-startup "XDG_CURRENT_DESKTOP=gnome" "64gram-desktop" "-startintray"
 spawn-at-startup "steam" "-silent"
 //spawn-at-startup "easyeffects" "--hide-window" "--service-mode"
 spawn-at-startup "bash" "-c" "'XDG_MENU_PREFIX=arch-" "kbuildsycoca6'"
-//spawn-at-startup "~/.config/niri/scripts/vmware-passtrouth.sh"
-spawn-at-startup "rm" "-rf" "~/.cache/cliphist/db"
+//spawn-at-startup "rm" "-rf" "~/.cache/cliphist/db"
 
 // █ █ ▄▀█ █▀█ ▀ ▄▀█ █▂▂ █   ▅▀▀▀▄
 // ▀▅▀ █▀█ █▀▅ █ █▀█ █▂█ █▄▄ ▀▄▂▔
@@ -243,7 +242,7 @@ binds {
     Super+z hotkey-overlay-title="zen-browser" { spawn "zen-browser"; }
     Super+e { spawn "dolphin"; }
     Super+I hotkey-overlay-title="waypaper" { spawn "waypaper"; }
-    Alt+Z { spawn-sh "$HOME/.config/niri/scripts/gsr.sh"; }
+    Alt+Z { spawn-sh "gsr-ui-cli toggle-show"; }
     Super+V hotkey-overlay-title="Clipboard History" {
          spawn "sh" "-c" "cliphist list | wofi --dmenu | cliphist decode | wl-copy && wl-paste -t text/plain | xclip -selection clipboard"
     }
