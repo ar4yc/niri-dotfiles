@@ -1,0 +1,23 @@
+//         /\
+//        /  \
+//       /    \
+//      /      \    Config By Axell, BTW ❄
+//     /   ,,   \
+//    /   |  |   \
+//   /_-''    ''-_\
+
+// █▀▀ ▀ ▀▃▀ █▔▔
+// █▀  █ ▅▀▅ ▂▂█
+
+window-rule {
+    match app-id=".*"
+    default-floating-position x=0 y=165 relative-to="top"
+}
+
+window-rule {
+    match app-id="gsr-ui"
+    match title="gsr ui"
+    open-floating true
+    opacity 0.5
+    open-fullscreen false
+}

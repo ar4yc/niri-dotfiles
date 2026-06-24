@@ -1,0 +1,155 @@
+//         /\
+//        /  \
+//       /    \
+//      /      \    Config By Axell, BTW ❄
+//     /   ,,   \
+//    /   |  |   \
+//   /_-''    ''-_\
+
+// ▄▀█ █▀█ █▀█ █▔▔
+// █▀█ █▀▀ █▀▀ ▂▂█
+
+layer-rule {
+    match namespace="waybar"
+    opacity 0.85
+    place-within-backdrop true
+        background-effect {
+        blur false
+        xray false
+        noise 0.02
+    }
+}
+
+layer-rule {
+    match namespace="swaync"
+    opacity 0.85
+    place-within-backdrop true
+        background-effect {
+        blur false
+        xray false
+        noise 0.05
+    }
+}
+
+layer-rule {
+    match namespace="wofi"
+    opacity 0.85
+    place-within-backdrop true
+        background-effect {
+        blur false
+        xray false
+    }
+}
+
+window-rule {
+    match app-id="^org.pulseaudio.pavucontrol$"
+    open-floating true
+    default-column-width { fixed 653; }
+    default-window-height { fixed 410; }
+    default-floating-position x=10 y=0 relative-to="top-right"
+}
+
+window-rule {
+    match app-id="^io.github.kaii_lb.Overskride$"
+    open-floating true
+    default-column-width { fixed 920; }
+    default-window-height { fixed 685; }
+    default-floating-position x=0 y=200 relative-to="bottom"
+}
+
+window-rule {
+    match app-id="^nm-connection-editor$"
+    open-floating true
+    default-column-width { fixed 398; }
+    default-window-height { fixed 388; }
+    default-floating-position x=10 y=0 relative-to="top-right"
+}
+
+window-rule {
+    match app-id="^mpv$"
+    open-floating true
+    default-floating-position x=0 y=200 relative-to="bottom"
+}
+
+window-rule {
+    match app-id="^app.drey.Dialect$"
+    open-floating true
+    default-column-width { fixed 814; }
+    default-window-height { fixed 320; }
+    default-floating-position x=0 y=200 relative-to="bottom"
+}
+
+window-rule {
+    match app-id="^io.missioncenter.MissionCenter$"
+    open-floating true
+    default-column-width { fixed 1045; }
+    default-window-height { fixed 553; }
+    default-floating-position x=0 y=200 relative-to="bottom"
+}
+
+window-rule {
+    match app-id="^vesktop$"
+    opacity 0.962   
+}
+
+window-rule {
+    match title="Picture In Picture|Картинка в картинке"
+    default-column-width { proportion 0.25; }
+    default-window-height { proportion 0.345; }
+    open-floating true
+    opacity 1.0
+}
+
+window-rule {
+    match app-id="^zen|firefox|librewolf$" title="^.*(Библиотека|History|Library).*$"
+    open-floating true
+    default-floating-position x=0 y=200 relative-to="bottom"
+}
+
+window-rule {
+    match app-id="telegram|io.github.tdesktop_x64.TDesktop"
+    open-floating true
+    default-floating-position x=0 y=200 relative-to="bottom"
+    opacity 1.0
+}
+
+window-rule {
+    match app-id="telegram|io.github.tdesktop_x64.TDesktop" title=".*64Gram.*|.*Telegram.*"
+    open-floating false
+}
+
+window-rule {
+    match app-id="telegram|io.github.tdesktop_x64.TDesktop" title=".*(Просмотр медиа|Media).*"
+    default-column-width { proportion 0.85; }
+    default-window-height { proportion 0.85; }
+    open-floating true
+    default-floating-position x=0 y=200 relative-to="bottom"
+    opacity 1.0
+}
+
+window-rule {
+    match app-id="xdg-desktop-portal-gnome" title=".*Share Screen.*"
+    open-floating true
+    default-floating-position x=0 y=200 relative-to="bottom"
+}
+
+window-rule {
+    match app-id="org.prismlauncher.PrismLauncher" title=".*(Загрузить|Download).*"
+    open-floating true
+    default-floating-position x=0 y=200 relative-to="bottom"
+    default-column-width { fixed 1037; }
+    default-window-height { fixed 734; }
+}
+
+window-rule {
+    match app-id="org.prismlauncher.PrismLauncher" title=".*(консоли|Console).*"
+    open-floating true
+    default-floating-position x=0 y=200 relative-to="bottom"
+    default-column-width { fixed 1224; }
+    default-window-height { fixed 912; }
+}
+
+window-rule {
+    match app-id="obsidian|Element|io.github.tdesktop_x64.TDesktop|vmware|zen|vesktop" 
+    // block-out-from "screencast"
+}

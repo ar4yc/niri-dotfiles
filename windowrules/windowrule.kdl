@@ -1,0 +1,125 @@
+//         /\
+//        /  \
+//       /    \
+//      /      \    Config By Axell, BTW ❄
+//     /   ,,   \
+//    /   |  |   \
+//   /_-''    ''-_\
+
+// ▄▀█ █▀█ █▀█ █▔▔  █▀▀ ▀ ▀▃▀ █▔▔
+// █▀█ █▀▀ █▀▀ ▂▂█  █▀  █ ▅▀▅ ▂▂█
+
+window-rule {
+    match app-id=r"^org.kde.dolphin$"
+    open-floating true
+    default-floating-position x=0 y=200 relative-to="bottom"
+}
+
+window-rule {
+    match app-id=r"^org\.kde\.dolphin$" title=r"^.*/.*— Dolphin.*$"
+    open-floating false
+}
+
+
+window-rule {
+    match app-id="^steam$"
+    open-floating true
+    default-column-width { fixed 920; }
+    default-window-height { fixed 571; }
+    default-floating-position x=0 y=200 relative-to="bottom"
+}
+
+window-rule {
+    match app-id="^steam$" title="^Steam$"
+    open-floating false
+    default-column-width { proportion 0.5; }
+    default-window-height { proportion 1.0; }
+}
+
+window-rule {
+    match app-id="^steam$" title="^.*(Настройки.*|Settings).*$"
+    open-floating true
+    default-column-width { fixed 840; }
+    default-window-height { fixed 717; }
+    default-floating-position x=0 y=200 relative-to="bottom"
+}
+
+window-rule {
+    match app-id="steam" title=".*(Список друзей|.*Friends List).*"
+    open-floating true
+    default-column-width { fixed 925; }
+    default-window-height { fixed 591; }
+    default-floating-position x=0 y=200 relative-to="bottom"
+}
+
+window-rule {
+    match app-id="steam" title=".*(Добавить стороннюю игру|Add Non-Steam Game).*"
+    open-floating true
+    default-column-width { fixed 900; }
+    default-window-height { fixed 790; }
+    default-floating-position x=0 y=200 relative-to="bottom"
+}
+
+window-rule {
+    match app-id="^steam$" title=r#"^notificationt_\d+_desktop$"#
+    open-floating true
+    open-focused false
+    default-floating-position x=10 y=10 relative-to="bottom-right"
+}
+
+window-rule {
+    match app-id=".*steam_app.*"
+    open-floating true
+    default-floating-position x=0 y=200 relative-to="bottom"
+    opacity 1.0
+}
+
+window-rule {
+    match app-id="^.*steam_app.*$" title=".*"
+    open-floating true 
+    default-floating-position x=0 y=200 relative-to="bottom"
+}
+
+
+window-rule {
+    match app-id="^org.kde.ark$"
+    open-floating false
+}
+
+window-rule {
+    match app-id="^org.kde.ark$" title="Extract — Ark"
+    open-floating true
+    default-floating-position x=0 y=200 relative-to="bottom"
+}
+
+window-rule {
+    match app-id="^org.kde.ark$" title=".*File Already Exists.*|.*Extracting.*|Loading archive"
+    open-floating true
+    default-floating-position x=0 y=200 relative-to="bottom"
+}
+
+
+window-rule {
+    match app-id="^org.qbittorrent.qBittorrent$"
+    open-floating true
+    default-floating-position x=0 y=200 relative-to="bottom"
+}
+
+window-rule {
+    match app-id="^org.qbittorrent.qBittorrent$" title=".*qBittorrent v.*"
+    open-floating false
+}
+
+window-rule {
+    match title=".*(file_progress|confirm|dialog|download|notification|error|splash|org.kde.kdialog|wizard|assistant|auth|permission).*"
+    open-floating true
+    default-floating-position x=0 y=200 relative-to="bottom"
+}
+
+window-rule {
+    match app-id="^org.gnome.Nautilus$" title=".*(Select|Open Files|Save File|Choose Files|Please choose a file).*"
+    open-floating true
+    default-column-width { fixed 1055; }
+    default-window-height { fixed 730; }
+    default-floating-position x=0 y=165 relative-to="top"
+}

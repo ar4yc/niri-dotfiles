@@ -1,0 +1,295 @@
+//         /\
+//        /  \
+//       /    \
+//      /      \    Config By Axell, BTW ❄
+//     /   ,,   \
+//    /   |  |   \
+//   /_-''    ''-_\
+
+// ██ ██ █▀█ █▄ █ ▀ ▀█▀ █▀█ █▀█
+// █ ▀ █ █▄█ █ ▀█ █  █  █▄█ █▀▅
+
+output "DP-1" {
+    mode "2560x1080@200"
+    scale 1
+    position x=0 y=0
+    focus-at-startup
+}
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+// █   ▄▀█ █ █ █▄ █ █▀▀ █ █
+// █▄▄ █▀█ █▅█ █ ▀█ █▅▅ █▀█
+
+spawn-at-startup "dbus-update-activation-environment" "--systemd" "DISPLAY" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=GNOME"
+spawn-at-startup "systemctl" "--user" "import-environment" "DISPLAY" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP" "XDG_SESSION_DESKTOP" "XDG_SESSION_TYPE"
+spawn-at-startup "waypaper" "--restore"
+spawn-at-startup "swaync"
+spawn-at-startup "waybar"
+spawn-at-startup "systemctl" "--user" "start" "plasma-polkit-agent.service"
+spawn-at-startup "wl-clip-persist" "--clipboard" "both"
+spawn-at-startup "env" "CLIPHIST_MAX_ITEMS=50" "wl-paste" "--type" "text" "--watch" "cliphist" "store"
+spawn-at-startup "env" "CLIPHIST_MAX_ITEMS=50" "wl-paste" "--type" "image" "--watch" "cliphist" "store"
+spawn-at-startup "XDG_CURRENT_DESKTOP=gnome" "64gram-desktop" "-startintray"
+spawn-at-startup "steam" "-silent"
+//spawn-at-startup "easyeffects" "--hide-window" "--service-mode"
+spawn-at-startup "bash" "-c" "'XDG_MENU_PREFIX=arch-" "kbuildsycoca6'"
+//spawn-at-startup "~/.config/niri/scripts/vmware-passtrouth.sh"
+spawn-at-startup "rm" "-rf" "~/.cache/cliphist/db"
+
+// █ █ ▄▀█ █▀█ ▀ ▄▀█ █▂▂ █   ▅▀▀▀▄
+// ▀▅▀ █▀█ █▀▅ █ █▀█ █▂█ █▄▄ ▀▄▂▔
+
+environment {
+    // Appearance
+    QT_QPA_PLATFORMTHEME "qt6ct"
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+    QT_AUTO_SCREEN_SCALE_FACTOR "1"
+    QT_SCALE_FACTOR "1"
+
+    // Cursor
+    XCURSOR_THEME "Moga-Candy-Macchiato"
+    XCURSOR_SIZE "18"
+
+    // IMPORTANT
+    GTK_USE_PORTAL "1"
+    QT_QPA_PLATFORM "wayland;xcb"
+
+    // Problem Fix
+    XDG_SESSION_TYPE "wayland"
+    ELECTRON_OZONE_PLATFORM_HINT "wayland"
+    CLUTTER_BACKEND "wayland"
+    ELECTRON_ENABLE_WAYLAND "1"
+    MOZ_ENABLE_WAYLAND "1"
+    MOZ_DISABLE_RDD_SANDBOX "1"
+    SDL_VIDEODRIVER "wayland"
+    DISABLE_LAYER_AMD_SWITCHABLE_GRAPHICS_1 "1"
+
+    // Hardware
+    GBM_BACKEND "nvidia-drm"
+    NVD_BACKEND "direct"
+    __GLX_VENDOR_LIBRARY_NAME "nvidia"
+    LIBVA_DRIVER_NAME "nvidia"
+    __GL_VRR_ALLOWED "1"
+    __GL_THREADED_OPTIMIZATIONS "1"
+}
+
+xwayland-satellite {
+    on
+    path "xwayland-satellite"
+}
+
+// █ █ ▀ █▔▔ █ █ ▄▀█ █
+// ▀▅▀ █ ▂▂█ █▂█ █▀█ █▄▄
+
+window-rule {
+    geometry-corner-radius 16
+    clip-to-geometry true
+    opacity 0.94
+    background-effect {
+        blur true
+        xray true
+    }
+}
+
+blur {
+    passes 3
+    offset 3
+    noise 0.02
+}
+
+prefer-no-csd
+
+layout {
+    always-center-single-column
+    gaps 12
+    center-focused-column "never"
+  //center-focused-column "always"
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+
+    default-column-width { proportion 0.5; }
+
+    focus-ring {
+        width 0
+    }
+
+    border {
+        on
+        width 1
+        active-color "#00000023"
+        inactive-color "#00000000"
+    }
+
+    shadow {
+        on
+        softness 14
+        spread 2
+        offset x=0 y=3
+        color "rgba(0, 0, 0, 0.55)"
+    }
+
+    struts {
+        left 5
+        right 5
+        bottom 3
+        top -11
+    }
+}
+
+// ██ ██ ▀ █▔▔ █▀▀
+// █ ▀ █ █ ▂▂█ █▅▅
+
+animations {
+
+    workspace-switch {
+        spring damping-ratio=1.6 stiffness=5000 epsilon=0.0001
+    }
+
+    window-open {
+        duration-ms 150
+        curve "ease-out-expo"
+    }
+
+    window-close {
+        duration-ms 150
+        curve "ease-out-quad"
+    }
+
+    horizontal-view-movement {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+
+    window-movement {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+
+    window-resize {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+
+    config-notification-open-close {
+        spring damping-ratio=0.6 stiffness=1000 epsilon=0.001
+    }
+
+    exit-confirmation-open-close {
+        spring damping-ratio=0.6 stiffness=500 epsilon=0.01
+    }
+
+    screenshot-ui-open {
+        duration-ms 200
+        curve "ease-out-quad"
+    }
+
+    overview-open-close {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+
+    recent-windows-close {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.001
+    }
+}
+
+// █ █▄ █ █▀█ █ █ ▀█▀
+// █ █ ▀█ █▀▀ █▅█  █
+
+gestures {
+    hot-corners { 
+        off;
+    }
+}
+
+input {
+    keyboard {
+        xkb {
+            layout "us,ru"
+            options "grp:alt_shift_toggle"
+        }
+        numlock
+    }
+
+    touchpad {
+        off
+        tap
+        natural-scroll
+    }
+
+    mouse {
+        accel-speed -0.78
+        accel-profile "flat"
+        scroll-method "no-scroll"
+        natural-scroll
+    }   
+    focus-follows-mouse max-scroll-amount="20%"
+
+    trackpoint {
+        off
+    }   
+}
+
+// █▃▀ ▅▀▀▀▄ █ █ █▂▂ ▀ █▄ █ █▀▄ █▔▔
+// █▀▄ ▀▄▂▔   █  █▂█ █ █ ▀█ █▃▀ ▂▂█
+
+binds {
+    Mod+Shift+Slash { show-hotkey-overlay; }
+    
+    Super+w hotkey-overlay-title="Open a Terminal: Kitty" { spawn "kitty"; }
+    Super+r hotkey-overlay-title="Wofi" { spawn "wofi" "--show run" ; }
+    Super+z hotkey-overlay-title="zen-browser" { spawn "zen-browser"; }
+    Super+e { spawn "dolphin"; }
+    Super+I hotkey-overlay-title="waypaper" { spawn "waypaper"; }
+    Alt+Z { spawn-sh "$HOME/.config/niri/scripts/gsr.sh"; }
+    Super+V hotkey-overlay-title="Clipboard History" {
+         spawn "sh" "-c" "cliphist list | wofi --dmenu | cliphist decode | wl-copy && wl-paste -t text/plain | xclip -selection clipboard"
+    }
+    Ctrl+Alt+S hotkey-overlay-title="hyprpicker" { spawn "hyprpicker" "--autocopy"; }
+    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+
+    Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
+ 
+    Super+Q repeat=false { close-window; }
+    Super+S { toggle-window-floating; } 
+    Super+F { fullscreen-window; }
+    Super+Shift+F { maximize-column; }
+    Super+X { set-column-width "50%"; }
+
+    Ctrl+Alt+Delete { quit; }
+    Super+Tab repeat=false { toggle-overview; }
+
+    Super+A { focus-column-left; }
+    Super+D { focus-column-right; }
+    Super+WheelScrollUp { focus-column-right; }
+    Super+WheelScrollDown { focus-column-left; }
+    Super+Shift+D  { move-column-right; }
+    Super+Shift+A  { move-column-left; }
+
+    Super+Shift+S { screenshot; }
+    Print { screenshot-screen; }
+
+    Super+1 { focus-workspace 1; }
+    Super+2 { focus-workspace 2; }
+    Super+3 { focus-workspace 3; }
+    Super+4 { focus-workspace 4; }
+    Super+5 { focus-workspace 5; }
+    Super+Shift+1 { move-column-to-workspace 1; }
+    Super+Shift+2 { move-column-to-workspace 2; }
+    Super+Shift+3 { move-column-to-workspace 3; }
+    Super+Shift+4 { move-column-to-workspace 4; }
+    Super+Shift+5 { move-column-to-workspace 5; }
+
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
+    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+    XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+    XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
+    XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
+    XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
+}
+
+include "windowrule.kdl"
